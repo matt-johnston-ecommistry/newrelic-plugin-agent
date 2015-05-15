@@ -403,6 +403,9 @@ class HTTPStatsPlugin(Plugin):
         if 'username' in self.config and 'password' in self.config:
             kwargs['auth'] = (self.config['username'], self.config['password'])
 
+        if 'httphost' in self.config:
+            kwargs['headers'] = {'Host': self.config['httphost']}
+
         LOGGER.debug('Request kwargs: %r', kwargs)
         return kwargs
 
